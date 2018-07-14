@@ -1,0 +1,21 @@
+{
+  "name": "sorted-updated-key-value-extractor",
+  "version": "1.0.0",
+  "description": "The SortedUpdatedKeyValueExtractor will receive a list of segments, which each segment would have a list of sorted key-value pairs, and will print in alphabetically order all the key-value pairs from all the segments",
+  "main": "index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "test": "mocha || true"
+  },
+
+  "private": true,
+  "author": "roykey",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "heap": "^0.2.6"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "mocha-testdata": "^1.2.0"
+  }
+}
