@@ -11,12 +11,14 @@ In our examle, the extractor would print : a:1, b:2, c:2.
 
 Notice that in each segment a key can appear at most one time.
 
-# use cases
+## Use cases
 
 When batch handling massive amount of data, which should be manipulated, inserted to a DB for example in a dump process cron scheduled, we whould like to take the most updated value for a key in the most effienct way.
 
+## This projects supports two kinds of extractors 
+
  
-#### SortedUpdatedKeyValueExtractor
+### SortedUpdatedKeyValueExtractor
 
 Each time the first M of key-value pairs will be loaded from all the N segments, and after it, another M
 key-value pairs would be loaded from that specific segment, until all its kv would be handled.
@@ -32,13 +34,12 @@ Complexity:
     Memory: O(N) additional space.
    
     
-#### OptimizedSortedUpdatedKeyValueExtractor
+### OptimizedSortedUpdatedKeyValueExtractor
 This package also supports an optimized OptimizedSortedUpdatedKeyValueExtractor, which implements the same logic as the SortedUpdatedKeyValueExtractor in a different way.
 
     With additional max O(N) memory, it will visit all N*M key-values, but will insert each key only once, meaning that the O(log(M)) insertions will be as many times as the number of different keys.
         
  If the number of segments (N) is significantly large and its not likely that a key would be updated much, use the SortedUpdatedKeyValueExtractor, else, always prefer the OptimizedSortedUpdatedKeyValueExtractor 
-
 
 
 ## How to use
