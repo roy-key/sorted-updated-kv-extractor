@@ -1,6 +1,7 @@
-# sorted-updated-kv-extractor
+# Sorted updated kv extractor
 
-Overview:
+## Overview:
+
 A segment is a a datastructure which holds multiply key-value pairs, sorted alphabetically.
 For example, this is a segment: ['a:1', 'b:1'].
 A key could be in multiple segments, therefore the most updated value for a key will be in the last segment,
