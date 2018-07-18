@@ -1,11 +1,19 @@
 # sorted-updated-kv-extractor
-The extractor will receive a list of segments, which each segment would have a list of sorted key-value pairs, and will print in alphabetically order all the key-value pairs from all the segments
 
-In each segment a key can appear at most one time, but the same key could be in another segment.
-then the key-value pair should be taken from the most updated segment, i.e the segment which has the bigger index in the segments array.
+Overview:
+A segment is a a datastructure which holds multiply key-value pairs, sorted alphabetically.
+For example, this is a segment: ['a:1', 'b:1'].
+A key could be in multiple segments, therefore the most updated value for a key will be in the last segment,
+For example, this is the list of segments: [['a:1', 'b:1'], ['b:2', 'c:2']] then the updated value for the key - b, whould be 2.
 
-Currently, for simplicity and understating, all the segments data is loaded into memory.
-To support very big segments it could be loaded in chucks of data from files or db;
+The extractor will receive a list of segments and will print in alphabetically order all the updated key-value pairs from all the segments.
+In our examle, the extractor would print : a:1, b:2, c:2.
+
+Notice that in each segment a key can appear at most one time.
+
+# use cases
+
+When batch handling massive amount of data, which should be manipulated, inserted to a DB for example in a dump process cron scheduled, we whould like to take the most updated value for a key in the most effienct way.
 
  
 #### SortedUpdatedKeyValueExtractor
